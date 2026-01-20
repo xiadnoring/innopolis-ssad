@@ -2,12 +2,22 @@
 
 using namespace std;
 
+static void swap_by_ptr (int *a, int *b) {
+    std::swap(*a, *b);
+}
+
+static void swap_by_ref (int &a, int &b) {
+    std::swap(a, b);
+}
+
 int main() {
-	int b;
-	cin >> b;
-	int seconds = b % 60;
-	int minutes = (b % (60 * 60) - seconds) / 60;
-	int hours = (b % (60 * 60 * 60) - minutes * 60 - seconds) / 60 / 60;
-	cout << hours << ":"<<minutes<<":"<<seconds<<"\n";
+    int a = 1;
+    int b = 2;
+    printf("a=%d b=%d\n", a, b);
+    swap_by_ptr(&a,&b);
+    printf("after swap_by_ptr -> a=%d b=%d\n", a, b);
+    printf("a=%d b=%d\n", a, b);
+    swap_by_ref(a,b);
+    printf("after swap_by_ref -> a=%d b=%d\n", a, b);
     return 0;
 }
